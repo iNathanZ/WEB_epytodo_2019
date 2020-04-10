@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>tasks</title>
+	</head>
+	<body>
+			<div>You have to do :<br>
+				{% for number in message %}
+					<ul><li>  {{ number[1] }}	  progress : {{ number[4] }}
+					<a href="/user/task/{{ number[0] }}"> view more</a>
+					<form action="/user/task/del/{{ number[0] }}" method="POST">  <button type="submit"> Delete </button></form> </li></ul>
+					<form action="/user/task/{{ number[0] }}" method="POST">
+						<p>Please select the status that you want to update:</p>
+						<input type="radio" id="not started" name="answer" value="not started">
+						<label for="not started">not started</label><br>
+						<input type="radio" id="in progress" name="answer" value="i progress">
+						<label for="in progress">in progress</label><br>
+						<input type="radio" id="done" name="answer" value="done">
+						<label for="done">done</label> <br>
+						<input type="submit" value="update">
+						</form>
+				{% endfor %}
+			</div>
+				<h1>Hurry up !</h1>
+	</body>
+</html>

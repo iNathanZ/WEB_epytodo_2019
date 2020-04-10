@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<lang="fr">
+    <html>
+        <header>
+            <title>epytodo</title>
+            <meta charset="UTF-8">
+        </header>
+        <body>
+                You are on the Task page
+                <form action="/user/task/add", method="POST">
+                    Task: <input type="text" placeholder="Enter Task's name" name="task" required="required" />
+                    <input type="submit" value="create task"/>
+                  </form>
+                  <form action="/user/task/" method="GET">
+                  Need to see a specific Task ? <input type="text" id="task_id" placeholder="Enter the task to search"/>
+                  <input type="submit" value="search task"/>
+                </form>
+        </body>
+    </html>

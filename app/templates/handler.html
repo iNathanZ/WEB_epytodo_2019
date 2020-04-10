@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<lang="fr">
+    <html>
+        <header>
+            <title>epytodo</title>
+            <meta charset="UTF-8">
+            <style>
+                .button_user {
+                    padding: 0 20px;
+                    position: absolute;
+                    top: 8%;
+                    left: 90%;
+                    text-align: center;
+                    }
+                  .button_tasks {
+                  padding: 0 20px;
+                  position: absolute;
+                  top: 11%;
+                  left: 90%;
+                  text-align: center;
+                  }
+                  .button_spectasks {
+                  padding: 0 20px;
+                  position: absolute;
+                  top: 14%;
+                  left: 86%;
+                  text-align: center;
+                  }
+            </style>
+        </header>
+        <body>
+                You are on the User page
+                <form action="/user/task">
+                    <button class="button_tasks" type="submit">view your tasks</button>
+                  </form>
+                  <form action="/user">
+                    <button class="button_user" type="submit">see user infos</button>
+                  </form>
+                  {% if error %}
+                    {{ error }}
+                  {% endif %}
+        </body>
+    </html>
