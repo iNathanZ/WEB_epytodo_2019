@@ -11,4 +11,4 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'axf64b'
 app.config['MYSQL_DB'] = 'epytodo'
 
-app.run(debug=True)
+app.run()
