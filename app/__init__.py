@@ -34,7 +34,6 @@ def create_user():
 
 @app.route('/signin', methods=["POST"])
 def signin():
-    msg = ""
     if request.method == 'POST':
         if session['loggedin']:
             return render_template("register.html", error="You are already logged in if you want to register, please log out")
@@ -79,7 +78,6 @@ def logout():
 
 @app.route('/user')
 def print_user():
-    msg = ""
     if session['loggedin'] == False:
         return render_template("register.html", error="You have to log in before")
     form = (session['id'],)
@@ -142,7 +140,6 @@ def add_new_task():
 
 @app.route('/user/task')
 def print_user_tasks():
-    number = 0
     msg = []
     if session['loggedin'] == False:
         return render_template("handler.html", error="You have to log in before")
@@ -177,7 +174,6 @@ def print_user_tasks():
 
 @app.route('/user/task/<int:task_id>', methods=["GET", "POST"])
 def print_user_spectask(task_id):
-    print("value = ", request.form['value'])
     try:
         connection = mysql.connector.connect(host='localhost',
                                     database='epytodo',
@@ -193,7 +189,8 @@ def print_user_spectask(task_id):
             if request.method == 'POST':
                 print("post")
                 sql = "UPDATE task SET status = %s;"
-                cursor.execute(sql, (request.form['value'],))
+                cursor.execute(sql, (request.form['answer'],))
+                connection.commit()
                 return ("task updated")
             if account:
                 return render_template("spec_task.html", msg=account)
