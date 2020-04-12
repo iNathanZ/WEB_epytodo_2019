@@ -5,31 +5,51 @@
             <title>epytodo</title>
             <meta charset="UTF-8">
             <style>
+              h2{
+                text-align: center;
+                margin: 0;
+                padding: 10;
+                overflow: hidden;
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
                 .button_user {
                     padding: 0 20px;
                     position: absolute;
-                    top: 8%;
-                    left: 90%;
+                    top: 25%;
+                    left: 40%;
                     text-align: center;
                     }
                   .button_tasks {
                   padding: 0 20px;
                   position: absolute;
-                  top: 11%;
-                  left: 90%;
+                  top: 25%;
+                  left: 50%;
                   text-align: center;
                   }
-                  .button_spectasks {
-                  padding: 0 20px;
-                  position: absolute;
-                  top: 14%;
-                  left: 86%;
-                  text-align: center;
+                  .alert {
+                    padding: 20px;
+                    background-color: red;
+                    color: white;
+                  }
+
+                  .closebtn {
+                    margin-left: 15px;
+                    color: white;
+                    font-weight: bold;
+                    float: right;
+                    font-size: 22px;
+                    line-height: 20px;
+                    cursor: pointer;
+                    transition: 0.3s;
                   }
             </style>
         </header>
         <body>
-                You are on the User page
+                <h2>Welcome to the Users page</h2>
                 <form action="/user/task">
                     <button class="button_tasks" type="submit">view your tasks</button>
                   </form>
@@ -37,7 +57,10 @@
                     <button class="button_user" type="submit">see user infos</button>
                   </form>
                   {% if error %}
-                    {{ error }}
+                  <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <strong>error !</strong> {{ error }}
+                  </div>
                   {% endif %}
         </body>
     </html>

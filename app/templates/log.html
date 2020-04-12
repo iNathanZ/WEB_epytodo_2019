@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <lang="fr">
-    <html>
-        <header>
-            <title>epytodo</title>
-            <meta charset="UTF-8">
-        </header>
-        <body>
-            <form action="/signin" method="POST">
-                User: <input type="text" placeholder="Enter Username" name="username" /><br>
-                Password: <input type="password" placeholder="Enter Password" name="password"/>
-                <input type="submit" value="Sign in"/>
-              </form>
-        </body>
-    </html>
+<html>
+    <header>
+        <title>epytodo</title>
+        <meta charset="UTF-8">
+        <style>
+            h2{
+                text-align: center;
+                margin: 0;
+                padding: 10;
+                overflow: hidden;
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            .alert {
+                    padding: 20px;
+                    background-color: red;
+                    color: white;
+                  }
+
+                  .closebtn {
+                    margin-left: 15px;
+                    color: white;
+                    font-weight: bold;
+                    float: right;
+                    font-size: 22px;
+                    line-height: 20px;
+                    cursor: pointer;
+                    transition: 0.3s;
+}
+        </style>
+    </header>
+    <body>
+
+        <h2> Log in</h2>
+        {% if error %}
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>error !</strong> {{ error }}
+        </div>
+        {% endif %}
+        <form action="/signin" method="POST">
+            <br><br>
+
+            <table align="center" style="text-align: left;">
+
+                <tr>
+                    <td>User:</td>
+                    <td><input type="text" placeholder="Enter Username" name="username" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" placeholder="Enter Password" name="password"required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Sign in"/></td>
+                    </tr>
+
+    </form>
+    </body>
+</html>

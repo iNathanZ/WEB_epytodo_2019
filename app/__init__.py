@@ -36,7 +36,7 @@ def create_user():
 def signin():
     if request.method == 'POST':
         if session['loggedin']:
-            return render_template("register.html", error="You are already logged in if you want to register, please log out")
+            return render_template("login.html", error="You are already logged in if you want to register, please log out")
         req = request.form
         form = (req["username"], req["password"])
 
@@ -65,13 +65,13 @@ def signin():
                 cursor.close()
                 connection.close()
                 print("connection closed")
-    return render_template('users.html')
+    return render_template('log.html', error="login or password does not match")
 
 @app.route('/logout')
 def logout():
     if session['loggedin'] == False:
         return render_template("register.html", error="You are already logged out")
-    session.pop('loggedin', False)
+    session['loggedin'] = False
     session.pop('id', None)
     session.pop('username', None)
     return render_template('index.html')
@@ -79,7 +79,7 @@ def logout():
 @app.route('/user')
 def print_user():
     if session['loggedin'] == False:
-        return render_template("register.html", error="You have to log in before")
+        return render_template("handler.html", error="You have to log in before")
     form = (session['id'],)
     print(form)
     try:
@@ -127,7 +127,7 @@ def add_new_task():
             sql = "INSERT INTO user_has_task VALUES (%s, %s);"
             cursor.execute(sql, to_insert)
             connection.commit()
-            return render_template("tasks.html")
+            return render_template("task_handler.html", msg="ok")
 
     except Error as e:
         print("error is :", e)

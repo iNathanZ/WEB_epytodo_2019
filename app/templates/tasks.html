@@ -3,14 +3,61 @@
 	<head>
 		<meta charset="utf-8">
 		<title>tasks</title>
+		<style>
+			h2{
+                    text-align: center;
+                    margin: 0;
+                    padding: 10;
+                overflow: hidden;
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                }
+				h1{
+					text-align: center;
+				}
+				#overlay3{
+					display: none;
+					position: fixed;
+					top:0; right:0; bottom:0; left:0;
+					background-color: rgba(0, 0, 0, 0.5);
+					z-index: 1000;
+				}
+				#overlay3:target{
+					display: block;
+				}
+				.popup_block{
+					background: #fff;
+					padding: 20px;
+					border: 20px solid #ddd;
+					position: relative;
+					margin: 10% auto;
+					width: 40%;
+					box-shadow: 0px 0px 20px #000;
+					border-radius: 10px;
+				}
+				img.btn_close {
+					float: right;
+					margin: -55px -55px 0 0;
+				}
+
+		</style>
 	</head>
 	<body>
-			<div>You have to do :<br>
+		
+		
+		<div> <h2>You have to do :</h2>
+			<table align="center" style="text-align: center;">
+				<tr>
+				  <br><br>
 				{% for number in message %}
-					<ul><li>  {{ number[1] }}	  progress : {{ number[4] }}
-					<a href="/user/task/{{ number[0] }}"> view more</a>
-					<form action="/user/task/del/{{ number[0] }}" method="POST">  <button type="submit"> Delete </button></form> </li></ul>
-					<form action="/user/task/{{ number[0] }}" method="POST">
+
+					<td>{{ number[1] }}</td><div id="overlay3">
+			<div class="popup_block">
+				<a class="close" href=""><img alt="Fermer" title="Fermer la fenêtre" class="btn_close"></a>
+				<form action="/user/task/{{ number[0] }}" method="POST">
 						<p>Please select the status that you want to update:</p>
 						<input type="radio" id="not started" name="answer" value="not started">
 						<label for="not started">not started</label><br>
@@ -19,9 +66,25 @@
 						<input type="radio" id="done" name="answer" value="done">
 						<label for="done">done</label> <br>
 						<input type="submit" value="update">
-						</form>
-				{% endfor %}
 			</div>
-				<h1>Hurry up !</h1>
+		</div>
+									<td>progress : {{ number[4] }}</td>
+									<td><a href="/user/task/{{ number[0] }}"> view more</a></td>
+									<td><form action="/user/task/del/{{ number[0] }}" method="POST">  <button type="submit"> Delete </button></form></td>
+									<td><p><a href="#overlay3">want to update you status ?</a></p></td>
+								</tr>
+			</div>
+				{% endfor %}
+					<tr>
+						<td></td> <td></td>
+						<td>
+							{% if message %}
+					<h1>Hurry up !</h1>
+				{% else %}
+					<h1>You don't have Anything to do</h1>
+				{% endif %}
+						</td>
+					</tr>
+				
 	</body>
 </html>

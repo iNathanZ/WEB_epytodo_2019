@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <lang="fr">
-    <html>
-        <header>
-            <title>epytodo</title>
-            <meta charset="UTF-8">
-        </header>
-        <body>
-            <form action="/register" method="POST">
-                User: <input type="text" placeholder="Enter Username" name="username" required="required" />
-                Password: <input type="password" placeholder="Enter Password" name="password" required="required" />
-                <input type="submit" value="create user"/>
-              </form>
-        </body>
-    </html>
+<html>
+    <header>
+        <title>epytodo</title>
+        <meta charset="UTF-8">
+        <style>
+            h2{
+                text-align: center;
+                margin: 0;
+                padding: 10;
+                overflow: hidden;
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+        </style>
+    </header>
+    <body>
+        <h2>Register</h2>
+
+        <form action="/register" method="POST">
+            <br><br>
+
+            <table align="center" style="text-align: left;">
+                <tr>
+                    <td>User:</td>
+                    <td><input type="text" placeholder="Enter Username" name="username" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" placeholder="Enter Password" name="password"required="required"/></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Create User"/></td>
+                    </tr>
+
+    </form>
+    </body>
+</html>
