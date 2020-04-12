@@ -4,10 +4,57 @@
         <header>
             <title>epytodo</title>
             <meta charset="UTF-8">
+            <style>
+                h2{
+                text-align: center;
+                margin: 0;
+                padding: 10;
+                overflow: hidden;
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+                table {
+                border-collapse: collapse;
+                border: 1px solid black;
+                background-color: rgba(255, 255, 128, .5);
+                text-align: center;
+                }
+                td {
+                    color: black;
+                }
+            </style>
         </header>
         <body>
-            id : {{ msg[0] }} <br> name : {{ msg[1] }} <br>
-             began : {{ msg[2] }} <br> end : {{ msg[3] }} <br>
-             progress : {{ msg[4] }}
+            <h2> informations </h2>
+            <br><br>
+            <table align="center">
+
+                <tr>
+                    <td>id :</td>
+                    <td>{{ msg[0] }}</td>
+                </tr>
+
+                <tr>
+                    <td>name :</td>
+                    <td>{{ msg[1] }}</td>
+                </tr>
+
+                <tr>
+                    <td>began :</td>
+                    <td>{{ msg[2] }}</td>
+                </tr>
+
+                <tr>
+                    <td>end :</td>
+                    <td>{{ msg[3] }}</td>
+                </tr>
+
+                <tr>
+                    <td>progress :</td>
+                    <td>{{ msg[4] }}</td>
+                </tr>
         </body>
     </html>

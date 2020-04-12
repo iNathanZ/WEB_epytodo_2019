@@ -20,10 +20,33 @@
                     text-align: center;
                     margin: 5%;
                 }
+                .alert {
+                    padding: 20px;
+                    background-color: green;
+                    color: white;
+                  }
+
+                  .closebtn {
+                    margin-left: 15px;
+                    color: white;
+                    font-weight: bold;
+                    float: right;
+                    font-size: 22px;
+                    line-height: 20px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
             </style>
         </header>
         <body>
                <h2>Welcome to the Tasks page</h2>
+
+               {% if msg %}
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+           {{ msg }}
+        </div>
+        {% endif %}
                 <form action="/user/task/add", method="POST">
                     <div class="task"> Task: <input type="text"
                         placeholder="Enter Task's name"

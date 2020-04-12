@@ -127,7 +127,7 @@ def add_new_task():
             sql = "INSERT INTO user_has_task VALUES (%s, %s);"
             cursor.execute(sql, to_insert)
             connection.commit()
-            return render_template("task_handler.html", msg="ok")
+            return render_template("task_handler.html", msg="task created")
 
     except Error as e:
         print("error is :", e)
@@ -188,10 +188,10 @@ def print_user_spectask(task_id):
                 account = cursor.fetchone()
             if request.method == 'POST':
                 print("post")
-                sql = "UPDATE task SET status = %s;"
-                cursor.execute(sql, (request.form['answer'],))
+                sql = "UPDATE task SET status = %s WHERE task_id = %s;"
+                cursor.execute(sql, (request.form['answer'], task_id))
                 connection.commit()
-                return ("task updated")
+                return render_template("handler.html", msg="status updated")
             if account:
                 return render_template("spec_task.html", msg=account)
             else:
@@ -209,7 +209,7 @@ def print_user_spectask(task_id):
 @app.route('/user/task/del/<int:task_id>', methods=['POST'])
 def del_task(task_id):
     if session['loggedin'] == False:
-        return render_template("register.html", error="You have to log in before")
+        return render_template("log.html", error="You have to log in before")
     try:
         connection = mysql.connector.connect(host='localhost',
                                     database='epytodo',
@@ -220,7 +220,7 @@ def del_task(task_id):
             sql = "DELETE FROM task WHERE task_id = %s;"
             cursor.execute(sql, (task_id,))
             connection.commit()
-            return ("task deleted")
+            return render_template("handler.html", msg='task deleted')
 
     except Error as e:
         print("error is :", e)
