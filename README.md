@@ -3,3 +3,4 @@
 
 
 The goal of this project was to create a Web server using Python (flask) and to create a todolist, with some SQL interactions.
+It was my very first web project.
